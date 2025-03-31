@@ -103,27 +103,36 @@
     <script>
         document.querySelectorAll('input[name="box"]').forEach(box => {
             box.addEventListener('change', function() {
-                const maxToppings = this.value === "mini" ? 1 : (this.value === "solo" ? 2 : 2);
-                const maxNappages = this.value === "duo" ? 2 : 1;
+                let maxNappages = 1;
+                let maxToppings = 1;
+                let maxFruits = 0;
                 
-                document.querySelectorAll('#toppings input, #fruits input').forEach(input => input.checked = false);
-                document.querySelectorAll('#nappages input').forEach(input => input.checked = false);
+                if (this.value === "solo") {
+                    maxNappages = 1;
+                    maxToppings = 2;
+                    maxFruits = 2;
+                } else if (this.value === "duo") {
+                    maxNappages = 2;
+                    maxToppings = 2;
+                    maxFruits = 2;
+                }
                 
-                document.querySelectorAll('#toppings input, #fruits input').forEach(input => {
-                    input.addEventListener('change', function() {
-                        if (document.querySelectorAll('#toppings input:checked, #fruits input:checked').length > maxToppings) {
-                            this.checked = false;
-                        }
+                document.querySelectorAll('#toppings input, #fruits input, #nappages input').forEach(input => input.checked = false);
+                
+                function checkLimit(category, max) {
+                    document.querySelectorAll(category + ' input').forEach(input => {
+                        input.addEventListener('change', function() {
+                            let selected = document.querySelectorAll(category + ' input:checked').length;
+                            if (selected > max) {
+                                this.checked = false;
+                            }
+                        });
                     });
-                });
+                }
                 
-                document.querySelectorAll('#nappages input').forEach(input => {
-                    input.addEventListener('change', function() {
-                        if (document.querySelectorAll('#nappages input:checked').length > maxNappages) {
-                            this.checked = false;
-                        }
-                    });
-                });
+                checkLimit('#toppings', maxToppings);
+                checkLimit('#fruits', maxFruits);
+                checkLimit('#nappages', maxNappages);
             });
         });
     </script>
