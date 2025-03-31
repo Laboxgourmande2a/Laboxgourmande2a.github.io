@@ -99,6 +99,41 @@
 
         <button type="submit" class="submit-btn">Valider la commande</button>
     </form>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const boxChoices = document.querySelectorAll('input[name="box"]');
+            const nappages = document.querySelectorAll('input[name="nappage"]');
+            const toppings = document.querySelectorAll('input[name="topping"]');
+            const fruits = document.querySelectorAll('input[name="fruit"]');
+
+            function updateLimits() {
+                let maxNappages = 0, maxToppings = 0, maxFruits = 0;
+                const selectedBox = document.querySelector('input[name="box"]:checked');
+                if (!selectedBox) return;
+                
+                if (selectedBox.value === 'mini') {
+                    maxNappages = 1; maxToppings = 1; maxFruits = 1;
+                } else if (selectedBox.value === 'solo') {
+                    maxNappages = 1; maxToppings = 2; maxFruits = 2;
+                } else if (selectedBox.value === 'duo') {
+                    maxNappages = 2; maxToppings = 2; maxFruits = 2;
+                }
+                
+                limitSelection(nappages, maxNappages);
+                limitSelection(toppings, maxToppings);
+                limitSelection(fruits, maxFruits);
+            }
+            
+            function limitSelection(elements, max) {
+                elements.forEach(el => el.addEventListener('change', function() {
+                    const checked = [...elements].filter(e => e.checked);
+                    if (checked.length > max) this.checked = false;
+                }));
+            }
+            
+            boxChoices.forEach(choice => choice.addEventListener('change', updateLimits));
+        });
+    </script>
 </body>
 </html>
-
