@@ -137,3 +137,9 @@
     </script>
 </body>
 </html>
+            
+            boxChoices.forEach(choice => choice.addEventListener('change', updateLimits));
+        });
+    </script>
+</body>
+</html>
