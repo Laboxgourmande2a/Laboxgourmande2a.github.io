@@ -84,27 +84,28 @@
             </div>
         </div>
 
-        <div class="section">
-            <h3>Fruits :</h3>
-            <div id="fruits">
-                <label><input type="checkbox" name="fruit" value="Fraise"> Fraise</label><br>
-                <label><input type="checkbox" name="fruit" value="Banane"> Banane</label><br>
-                <label><input type="checkbox" name="fruit" value="Kiwi"> Kiwi</label><br>
-                <label><input type="checkbox" name="fruit" value="Framboise"> Framboise</label><br>
-                <label><input type="checkbox" name="fruit" value="Poire"> Poire</label><br>
-                <label><input type="checkbox" name="fruit" value="Myrtille"> Myrtille</label><br>
-                <label><input type="checkbox" name="fruit" value="Melon"> Melon</label><br>
-                <label><input type="checkbox" name="fruit" value="Mangue"> Mangue</label><br>
-            </div>
-        </div>
-
         <button type="submit" class="submit-btn">Valider la commande</button>
     </form>
 
     <script>
-        document.getElementById("commandeForm").addEventListener("submit", function(event) {
-            event.preventDefault();
-            alert("Votre commande a été envoyée !");
+        document.querySelectorAll("input[name='box']").forEach(radio => {
+            radio.addEventListener("change", function() {
+                let nappageLimit = this.value === "duo" ? 2 : 1;
+                let toppingLimit = this.value === "mini" ? 1 : 2;
+                
+                let nappages = document.querySelectorAll("input[name='nappage']");
+                let toppings = document.querySelectorAll("input[name='topping']");
+                
+                nappages.forEach(n => n.addEventListener("change", function() {
+                    let checked = document.querySelectorAll("input[name='nappage']:checked");
+                    if (checked.length > nappageLimit) this.checked = false;
+                }));
+                
+                toppings.forEach(t => t.addEventListener("change", function() {
+                    let checked = document.querySelectorAll("input[name='topping']:checked");
+                    if (checked.length > toppingLimit) this.checked = false;
+                }));
+            });
         });
     </script>
 </body>
