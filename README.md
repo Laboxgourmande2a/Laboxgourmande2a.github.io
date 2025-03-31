@@ -54,9 +54,9 @@
 
         <div class="section">
             <h3>Choisissez votre Box :</h3>
-            <label><input type="radio" name="box" value="mini" required> Mini (10 pancakes avec 1 nappage et 1 topping)</label>
-            <label><input type="radio" name="box" value="solo"> Solo (20 pancakes avec 1 nappage et 2 fruits ou toppings)</label>
-            <label><input type="radio" name="box" value="duo"> Duo (40 pancakes avec 2 nappages et 2 fruits et/ou toppings)</label>
+            <label><input type="radio" name="box" value="mini" required> Mini (10 pancakes avec 1 nappage et 1 topping ou 1 fruit)</label>
+            <label><input type="radio" name="box" value="solo"> Solo (20 pancakes avec 1 nappage et 1 fruit ou 2 toppings ou 2 fruits)</label>
+            <label><input type="radio" name="box" value="duo"> Duo (40 pancakes avec 2 nappages et 2 fruits et 2 toppings)</label>
         </div>
 
         <div class="section">
@@ -105,7 +105,7 @@
             box.addEventListener('change', function() {
                 let maxNappages = 1;
                 let maxToppings = 1;
-                let maxFruits = 0;
+                let maxFruits = 1;
                 
                 if (this.value === "solo") {
                     maxNappages = 1;
