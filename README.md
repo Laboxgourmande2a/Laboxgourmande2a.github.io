@@ -72,6 +72,20 @@
         </div>
 
         <div class="section">
+            <h3>Fruits :</h3>
+            <div id="fruits">
+                <label><input type="checkbox" name="fruit" value="Fraise"> Fraise</label><br>
+                <label><input type="checkbox" name="fruit" value="Banane"> Banane</label><br>
+                <label><input type="checkbox" name="fruit" value="Kiwi"> Kiwi</label><br>
+                <label><input type="checkbox" name="fruit" value="Framboise"> Framboise</label><br>
+                <label><input type="checkbox" name="fruit" value="Poire"> Poire</label><br>
+                <label><input type="checkbox" name="fruit" value="Myrtille"> Myrtille</label><br>
+                <label><input type="checkbox" name="fruit" value="Melon"> Melon</label><br>
+                <label><input type="checkbox" name="fruit" value="Mangue"> Mangue</label><br>
+            </div>
+        </div>
+
+        <div class="section">
             <h3>Nappages :</h3>
             <div id="nappages">
                 <label><input type="checkbox" name="nappage" value="Nutella"> Nutella</label><br>
@@ -91,11 +105,13 @@
         document.querySelectorAll("input[name='box']").forEach(radio => {
             radio.addEventListener("change", function() {
                 let nappageLimit = this.value === "duo" ? 2 : 1;
-                let toppingLimit = this.value === "mini" ? 1 : 2;
-                
+                let toppingLimit = this.value === "mini" ? 1 : (this.value === "solo" ? 2 : 2);
+                let fruitLimit = this.value === "solo" ? 2 : (this.value === "duo" ? 2 : 1);
+
                 let nappages = document.querySelectorAll("input[name='nappage']");
                 let toppings = document.querySelectorAll("input[name='topping']");
-                
+                let fruits = document.querySelectorAll("input[name='fruit']");
+
                 nappages.forEach(n => n.addEventListener("change", function() {
                     let checked = document.querySelectorAll("input[name='nappage']:checked");
                     if (checked.length > nappageLimit) this.checked = false;
@@ -104,6 +120,11 @@
                 toppings.forEach(t => t.addEventListener("change", function() {
                     let checked = document.querySelectorAll("input[name='topping']:checked");
                     if (checked.length > toppingLimit) this.checked = false;
+                }));
+
+                fruits.forEach(f => f.addEventListener("change", function() {
+                    let checked = document.querySelectorAll("input[name='fruit']:checked");
+                    if (checked.length > fruitLimit) this.checked = false;
                 }));
             });
         });
