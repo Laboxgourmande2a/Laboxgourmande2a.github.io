@@ -55,7 +55,7 @@
         <div class="section">
             <h3>Choisissez votre Box :</h3>
             <label><input type="radio" name="box" value="mini" required> Mini (10 pancakes avec 1 nappage et 1 topping ou 1 fruit)</label>
-            <label><input type="radio" name="box" value="solo"> Solo (20 pancakes avec 1 nappage et 1 fruit ou 2 toppings ou 2 fruits)</label>
+            <label><input type="radio" name="box" value="solo"> Solo (20 pancakes avec 1 nappage + 1 fruit et 1 topping ou 2 fruits ou 2 toppings)</label>
             <label><input type="radio" name="box" value="duo"> Duo (40 pancakes avec 2 nappages et 2 fruits et 2 toppings)</label>
         </div>
 
@@ -99,42 +99,6 @@
 
         <button type="submit" class="submit-btn">Valider la commande</button>
     </form>
-
-    <script>
-        document.querySelectorAll('input[name="box"]').forEach(box => {
-            box.addEventListener('change', function() {
-                let maxNappages = 1;
-                let maxToppings = 1;
-                let maxFruits = 1;
-                
-                if (this.value === "solo") {
-                    maxNappages = 1;
-                    maxToppings = 2;
-                    maxFruits = 2;
-                } else if (this.value === "duo") {
-                    maxNappages = 2;
-                    maxToppings = 2;
-                    maxFruits = 2;
-                }
-                
-                document.querySelectorAll('#toppings input, #fruits input, #nappages input').forEach(input => input.checked = false);
-                
-                function checkLimit(category, max) {
-                    document.querySelectorAll(category + ' input').forEach(input => {
-                        input.addEventListener('change', function() {
-                            let selected = document.querySelectorAll(category + ' input:checked').length;
-                            if (selected > max) {
-                                this.checked = false;
-                            }
-                        });
-                    });
-                }
-                
-                checkLimit('#toppings', maxToppings);
-                checkLimit('#fruits', maxFruits);
-                checkLimit('#nappages', maxNappages);
-            });
-        });
-    </script>
 </body>
 </html>
+
