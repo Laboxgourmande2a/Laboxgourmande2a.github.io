@@ -5,35 +5,40 @@
     <title>Commande Pancakes</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Arial', sans-serif;
             max-width: 600px;
             margin: auto;
             padding: 20px;
-            background-color: #f8f8f8;
+            background-color: #fff3e6;
         }
         h2 {
             text-align: center;
+            color: #d35400;
         }
         .section {
             margin-bottom: 20px;
             padding: 15px;
             background: white;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        label {
+            display: block;
+            margin: 5px 0;
         }
         .submit-btn {
             display: block;
             width: 100%;
-            padding: 10px;
-            background: #ff9900;
+            padding: 12px;
+            background: #d35400;
             color: white;
             border: none;
-            border-radius: 5px;
+            border-radius: 8px;
             font-size: 16px;
             cursor: pointer;
         }
         .submit-btn:hover {
-            background: #e68a00;
+            background: #a84300;
         }
     </style>
 </head>
@@ -42,59 +47,53 @@
     <form id="commandeForm">
         <div class="section">
             <h3>Informations personnelles :</h3>
-            <label>Nom : <input type="text" name="nom" required></label><br>
-            <label>Téléphone : <input type="tel" name="telephone" required></label><br>
+            <label>Nom : <input type="text" name="nom" required></label>
+            <label>Téléphone : <input type="tel" name="telephone" required></label>
             <label>Adresse de livraison : <input type="text" name="adresse" required></label>
         </div>
 
         <div class="section">
             <h3>Choisissez votre Box :</h3>
-            <label><input type="radio" name="box" value="mini" required> Mini (10 pancakes avec 1 nappage et 1 topping)</label><br>
-            <label><input type="radio" name="box" value="solo"> Solo (20 pancakes avec 1 nappage et 2 toppings ou fruits)</label><br>
-            <label><input type="radio" name="box" value="duo"> Duo (40 pancakes avec 2 nappages et 2 toppings et/ou fruits)</label>
+            <label><input type="radio" name="box" value="mini" required> Mini (10 pancakes avec 1 nappage et 1 topping)</label>
+            <label><input type="radio" name="box" value="solo"> Solo (20 pancakes avec 1 nappage et 2 fruits ou toppings)</label>
+            <label><input type="radio" name="box" value="duo"> Duo (40 pancakes avec 2 nappages et 2 fruits et/ou toppings)</label>
         </div>
 
         <div class="section">
             <h3>Suppléments Gourmands :</h3>
             <div id="toppings">
-                <label><input type="checkbox" name="topping" value="Kinder Bueno"> Kinder Bueno</label><br>
-                <label><input type="checkbox" name="topping" value="Kinder Bueno White"> Kinder Bueno White</label><br>
-                <label><input type="checkbox" name="topping" value="Spéculoos"> Spéculoos</label><br>
-                <label><input type="checkbox" name="topping" value="Oreo"> Oreo</label><br>
-                <label><input type="checkbox" name="topping" value="Kit Kat"> Kit Kat</label><br>
-                <label><input type="checkbox" name="topping" value="M&Ms"> M&Ms</label><br>
-                <label><input type="checkbox" name="topping" value="Lion"> Lion</label><br>
-                <label><input type="checkbox" name="topping" value="Snickers"> Snickers</label><br>
-                <label><input type="checkbox" name="topping" value="Granola"> Granola</label><br>
-                <label><input type="checkbox" name="topping" value="Éclats de noisette"> Éclats de noisette</label><br>
-                <label><input type="checkbox" name="topping" value="Sucre glace"> Sucre glace</label><br>
+                <label><input type="checkbox" name="topping" value="Kinder Bueno"> Kinder Bueno</label>
+                <label><input type="checkbox" name="topping" value="Spéculoos"> Spéculoos</label>
+                <label><input type="checkbox" name="topping" value="Oreo"> Oreo</label>
+                <label><input type="checkbox" name="topping" value="Kit Kat"> Kit Kat</label>
+                <label><input type="checkbox" name="topping" value="M&Ms"> M&Ms</label>
+                <label><input type="checkbox" name="topping" value="Éclats de noisette"> Éclats de noisette</label>
+                <label><input type="checkbox" name="topping" value="Sucre glace"> Sucre glace</label>
             </div>
         </div>
 
         <div class="section">
             <h3>Fruits :</h3>
             <div id="fruits">
-                <label><input type="checkbox" name="fruit" value="Fraise"> Fraise</label><br>
-                <label><input type="checkbox" name="fruit" value="Banane"> Banane</label><br>
-                <label><input type="checkbox" name="fruit" value="Kiwi"> Kiwi</label><br>
-                <label><input type="checkbox" name="fruit" value="Framboise"> Framboise</label><br>
-                <label><input type="checkbox" name="fruit" value="Poire"> Poire</label><br>
-                <label><input type="checkbox" name="fruit" value="Myrtille"> Myrtille</label><br>
-                <label><input type="checkbox" name="fruit" value="Melon"> Melon</label><br>
-                <label><input type="checkbox" name="fruit" value="Mangue"> Mangue</label><br>
+                <label><input type="checkbox" name="fruit" value="Fraise"> Fraise</label>
+                <label><input type="checkbox" name="fruit" value="Banane"> Banane</label>
+                <label><input type="checkbox" name="fruit" value="Kiwi"> Kiwi</label>
+                <label><input type="checkbox" name="fruit" value="Framboise"> Framboise</label>
+                <label><input type="checkbox" name="fruit" value="Poire"> Poire</label>
+                <label><input type="checkbox" name="fruit" value="Myrtille"> Myrtille</label>
+                <label><input type="checkbox" name="fruit" value="Mangue"> Mangue</label>
             </div>
         </div>
 
         <div class="section">
             <h3>Nappages :</h3>
             <div id="nappages">
-                <label><input type="checkbox" name="nappage" value="Nutella"> Nutella</label><br>
-                <label><input type="checkbox" name="nappage" value="Caramel"> Caramel beurre salé</label><br>
-                <label><input type="checkbox" name="nappage" value="Crème pistache"> Crème pistache</label><br>
-                <label><input type="checkbox" name="nappage" value="Crème spéculoos"> Crème spéculoos</label><br>
-                <label><input type="checkbox" name="nappage" value="Sirop d’érable"> Sirop d’érable</label><br>
-                <label><input type="checkbox" name="nappage" value="Chocolat noir"> Chocolat noir</label><br>
-                <label><input type="checkbox" name="nappage" value="Chocolat blanc"> Chocolat blanc</label><br>
+                <label><input type="checkbox" name="nappage" value="Nutella"> Nutella</label>
+                <label><input type="checkbox" name="nappage" value="Caramel"> Caramel beurre salé</label>
+                <label><input type="checkbox" name="nappage" value="Crème pistache"> Crème pistache</label>
+                <label><input type="checkbox" name="nappage" value="Sirop d’érable"> Sirop d’érable</label>
+                <label><input type="checkbox" name="nappage" value="Chocolat noir"> Chocolat noir</label>
+                <label><input type="checkbox" name="nappage" value="Chocolat blanc"> Chocolat blanc</label>
             </div>
         </div>
 
@@ -102,30 +101,29 @@
     </form>
 
     <script>
-        document.querySelectorAll("input[name='box']").forEach(radio => {
-            radio.addEventListener("change", function() {
-                let nappageLimit = this.value === "duo" ? 2 : 1;
-                let toppingLimit = this.value === "mini" ? 1 : (this.value === "solo" ? 2 : 2);
-                let fruitLimit = this.value === "solo" ? 2 : (this.value === "duo" ? 2 : 1);
-
-                let nappages = document.querySelectorAll("input[name='nappage']");
-                let toppings = document.querySelectorAll("input[name='topping']");
-                let fruits = document.querySelectorAll("input[name='fruit']");
-
-                nappages.forEach(n => n.addEventListener("change", function() {
-                    let checked = document.querySelectorAll("input[name='nappage']:checked");
-                    if (checked.length > nappageLimit) this.checked = false;
-                }));
+        document.querySelectorAll('input[name="box"]').forEach(box => {
+            box.addEventListener('change', function() {
+                const maxToppings = this.value === "mini" ? 1 : (this.value === "solo" ? 2 : 2);
+                const maxNappages = this.value === "duo" ? 2 : 1;
                 
-                toppings.forEach(t => t.addEventListener("change", function() {
-                    let checked = document.querySelectorAll("input[name='topping']:checked");
-                    if (checked.length > toppingLimit) this.checked = false;
-                }));
-
-                fruits.forEach(f => f.addEventListener("change", function() {
-                    let checked = document.querySelectorAll("input[name='fruit']:checked");
-                    if (checked.length > fruitLimit) this.checked = false;
-                }));
+                document.querySelectorAll('#toppings input, #fruits input').forEach(input => input.checked = false);
+                document.querySelectorAll('#nappages input').forEach(input => input.checked = false);
+                
+                document.querySelectorAll('#toppings input, #fruits input').forEach(input => {
+                    input.addEventListener('change', function() {
+                        if (document.querySelectorAll('#toppings input:checked, #fruits input:checked').length > maxToppings) {
+                            this.checked = false;
+                        }
+                    });
+                });
+                
+                document.querySelectorAll('#nappages input').forEach(input => {
+                    input.addEventListener('change', function() {
+                        if (document.querySelectorAll('#nappages input:checked').length > maxNappages) {
+                            this.checked = false;
+                        }
+                    });
+                });
             });
         });
     </script>
